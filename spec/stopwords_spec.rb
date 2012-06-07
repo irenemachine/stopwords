@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require 'spec_helper'
 
 describe Stopwords do
   describe '.is?' do
@@ -24,6 +24,11 @@ describe Stopwords do
     end
     it "should return false if a given token is blank" do
       Stopwords.valid?('').should be(false)    
+    end
+  end
+  describe '.remove' do
+    it "should return the parameter string with all stopwords removed" do
+      Stopwords.remove("This is a string that needs all stopwords removed").should == "string needs stopwords removed"
     end
   end
 end
