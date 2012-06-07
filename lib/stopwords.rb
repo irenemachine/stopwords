@@ -39,5 +39,9 @@ module Stopwords
   def self.valid?(token)
     (((token =~ TOKEN_REGEXP) == 0)) and !(STOP_WORDS.member?(token)) 
   end
+
+  def self.remove(string)
+    string.downcase.gsub(/\b(#{STOP_WORDS.join('|')})\b/mi, '').squeeze(" ").strip
+  end
   
 end
